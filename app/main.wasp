@@ -151,6 +151,15 @@ action updateIsUserAdminById {
 }
 //#endregion
 
+//#region Test App
+route TestAppRoute { path: "/test-app", to: TestAppPage }
+page TestAppPage {
+  authRequired: true,
+  component: import TestAppPage from "@src/test-app/TestAppPage"
+}
+//#endregion
+
+
 //#region Demo AI App
 route DemoAppRoute { path: "/demo-app", to: DemoAppPage }
 page DemoAppPage {

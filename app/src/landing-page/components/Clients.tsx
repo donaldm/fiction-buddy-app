@@ -1,24 +1,27 @@
-import AstroLogo from "../logos/AstroLogo";
-import OpenAILogo from "../logos/OpenAILogo";
-import PrismaLogo from "../logos/PrismaLogo";
-import SalesforceLogo from "../logos/SalesforceLogo";
-
-export default function Clients() {
+export default function TestAppPage() {
   return (
-    <div className='mt-12 mx-auto max-w-7xl px-6 lg:px-8 flex flex-col items-between gap-y-6'>
-      <h2 className='mb-6 text-center font-semibold tracking-wide text-gray-500 dark:text-white'>
-        Built with / Used by:
-      </h2>
+    <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
+      {/* Side Nav */}
+      <div className="w-64 bg-gray-200 text-black dark:bg-gray-950 dark:text-gray-200">
+        <div className="px-4 py-6">
+          <h2 className="text-xl font-semibold">My App</h2>
+        </div>
+        <ul className="space-y-4 px-4">
+          <li>
+            <a href="#" className="text-gray-300 hover:text-white dark:text-gray-400 dark:hover:text-white">
+              Characters
+            </a>
+          </li>
+          {/* Add more nav items as needed */}
+        </ul>
+      </div>
 
-      <div className='mx-auto grid max-w-lg grid-cols-2 items-center gap-x-8 gap-y-12 sm:max-w-xl md:grid-cols-4 sm:gap-x-10 sm:gap-y-14 lg:mx-0 lg:max-w-none'>
-        {
-          [<SalesforceLogo />, <PrismaLogo />, <AstroLogo />, <OpenAILogo />].map((logo, index) => (
-            <div key={index} className='flex justify-center col-span-1 max-h-12 w-full object-contain dark:opacity-80'>
-              {logo}
-            </div>
-          ))
-        }
+      {/* Main Content */}
+      <div className="flex-1 p-6 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-semibold text-gray-900 dark:text-gray-100">Hello World</h2>
+        </div>
       </div>
     </div>
-  )
+  );
 }
