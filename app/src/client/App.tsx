@@ -1,4 +1,5 @@
 import './Main.css';
+import './font-awesome'
 import NavBar from './components/NavBar/NavBar';
 import CookieConsentBanner from './components/cookie-consent/Banner';
 import { appNavigationItems } from './components/NavBar/contentSections';

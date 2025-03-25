@@ -3,40 +3,50 @@ import { useState } from "react";
 import { CgSpinner } from "react-icons/cg";
 import { TiDelete } from "react-icons/ti";
 import { cn } from "../client/cn";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleRight, faAngleDown, faUserAstronaut, faMountainSun } from '@fortawesome/free-solid-svg-icons';
 
 import ContextMenu from "./components/ContextMenu";
 
 export default function TestAppPage() {
-  const [contextMenu, setContextMenu] = useState({
+  const [characterContextMenu, setCharacterContextMenu] = useState({
     visible: false,
     x: 0,
     y: 0,
   });
 
-  const handleContextMenu = (e: React.MouseEvent) => {
+  const handleCharacterContextMenu = (e: React.MouseEvent) => {
     e.preventDefault();
-    setContextMenu({ visible: true, x: e.pageX, y: e.pageY });
+    setCharacterContextMenu({ visible: true, x: e.pageX, y: e.pageY });
   };
 
-  const toggleDarkMode = () => {
-    document.documentElement.classList.toggle("dark");
-    setContextMenu({ ...contextMenu, visible: false });
+  const addCharacter = () => {
+    setCharacterContextMenu({ ...characterContextMenu, visible: false });
   };
 
   return (
-    <div className="flex min-h-screen" onContextMenu={handleContextMenu}>
+    <div className="flex min-h-screen">
       {/* Side Nav */}
       <div className="w-64 bg-gray:200 bg-gray-50 text-black dark:bg-gray-800 dark:text-white">
         <div className="px-4 py-6">
-          <h2 className="text-xl font-semibold">My App</h2>
+          <h2 className="text-xl font-semibold">Project</h2>
         </div>
         <ul className="space-y-4">
           <li>
             <a
               href="#"
               className="pl-4 block w-full dark:text-white hover:bg-blue-200 dark:hover:bg-blue-800"
+              onContextMenu={handleCharacterContextMenu}
             >
-              Characters
+            <FontAwesomeIcon icon={faAngleRight}/> <FontAwesomeIcon icon={faUserAstronaut} className="w-4 h-4 px-2"/> Characters
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="pl-4 block w-full dark:text-white hover:bg-blue-200 dark:hover:bg-blue-800"
+            >
+            <FontAwesomeIcon icon={faAngleRight}/> <FontAwesomeIcon icon={faMountainSun} className="w-4 h-4 px-2"/> Scenes
             </a>
           </li>
           {/* Add more nav items as needed */}
@@ -52,18 +62,18 @@ export default function TestAppPage() {
         </div>
       </div>
 
-      {/* Context Menu */}
+      {/* Character Context Menu */}
       <ContextMenu
-        visible={contextMenu.visible}
-        x={contextMenu.x}
-        y={contextMenu.y}
-        onClose={() => setContextMenu({ ...contextMenu, visible: false })}
+        visible={characterContextMenu.visible}
+        x={characterContextMenu.x}
+        y={characterContextMenu.y}
+        onClose={() => setCharacterContextMenu({ ...characterContextMenu, visible: false })}
       >
         <button
-          onClick={toggleDarkMode}
+          onClick={addCharacter}
           className="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
         >
-          Toggle Dark Mode
+          Add Character
         </button>
       </ContextMenu>
     </div>
